@@ -25,7 +25,7 @@ const PkgsList: React.FC = () => {
             </form>
             {error && <h3>{error}</h3>}
             {loading && <h3>loading...</h3>}
-            {data && data.map((pkg, i) => <div key={pkg}>{i} {pkg}</div>)}
+            {data && data.map((pkg, i) => <div key={pkg}>{i+1} {pkg}</div>)}
         </div>
     )
 }
