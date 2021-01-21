@@ -6,7 +6,7 @@ interface Action {
 
 interface ActionSuccess {
     type: ActionTypes.SearchPkgsSuccess,
-    payload: string[]
+    payload: any[]
 }
 
 interface ActionError {
