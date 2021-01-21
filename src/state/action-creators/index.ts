@@ -7,14 +7,20 @@ export const searchPkgs = (term: string) => {
     return async (dispatch: Dispatch<Actions>) => {
         dispatch({ type: ActionTypes.SearchPkgs })
         try {
-            const { data } = await axios.get('https://registry.npmjs.org/-/v1/search',{
+            const { data } = await axios.get('https://api.npms.io/v2/search',{
                 params: {
-                    text: term
+                    q: term,
+                    size: 250
                 }
             })
             dispatch({
                 type: ActionTypes.SearchPkgsSuccess,
-                payload: data.objects.map((pkg:any) => pkg.package.name)
+                payload: data.results.map((pkg:any) => {
+                    return {
+                        name: pkg.package.name,
+                        version: pkg.package.version
+                    }
+                })
             })
         } catch(err) {
             dispatch({
