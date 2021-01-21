@@ -7,7 +7,6 @@ const PkgsList: React.FC = () => {
     const [term, setTerm] = useState('')
     const { searchPkgs } = useActions()
     const { loading, error, data }= useTypedSelector((state) => state.pkgs)
-    console.log('state:', data)
     const onChange = (evt: React.ChangeEvent<HTMLInputElement>) =>
         setTerm(evt.target.value)
 
@@ -25,7 +24,7 @@ const PkgsList: React.FC = () => {
             </form>
             {error && <h3>{error}</h3>}
             {loading && <h3>loading...</h3>}
-            {data && data.map((pkg, i) => <div key={pkg}>{i+1} {pkg}</div>)}
+            {data && data.map((pkg, i) => <div key={pkg.name}>{i+1} {pkg.name} {pkg.version}</div>)}
         </div>
     )
 }
