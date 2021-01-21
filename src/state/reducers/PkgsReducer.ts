@@ -4,7 +4,7 @@ import { Actions } from '../actions'
 interface PkgsState {
     loading: boolean,
     error: string | null,
-    data: string[]
+    data: any[]
 }
 
 const initialState = {
